@@ -1,14 +1,15 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Router from "./Router";
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import Router from './Router'
+import { ParentHeight } from './components/UIkit/ParentHeight'
 
 function App() {
   return (
-    <div>
+    <ParentHeight>
       <Router />
-    </div>
-  );
+    </ParentHeight>
+  )
 }
 
-export default App;
+export default App

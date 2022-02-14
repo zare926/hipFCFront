@@ -1,17 +1,20 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Test from "./Test";
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import InitialModal from './components/top/InitialModal'
+import { ParentHeight } from './components/UIkit/ParentHeight'
+import Test from './Test'
 
 const Router = () => {
   return (
-    <div>
+    <ParentHeight>
       <BrowserRouter>
         <Routes>
-          <Route path="/test" element={<Test />} />
+          <Route path='/test' element={<Test />} />
+          <Route path='/modal' element={<InitialModal />} />
         </Routes>
       </BrowserRouter>
-    </div>
-  );
-};
+    </ParentHeight>
+  )
+}
 
-export default Router;
+export default Router

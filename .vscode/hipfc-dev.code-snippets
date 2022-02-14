@@ -1,0 +1,61 @@
+{
+  "=================================React系=================================": {
+    "prefix": "qqqqqqqqq",
+    "body": [""],
+    "description": "---"
+  },
+  "reactImport": {
+    "prefix": "ri",
+    "body": [
+      "import React, { useState } from 'react';",
+      "import { useDispatch, useSelector } from 'react-redux'",
+      "import { useHistory } from 'react-router';"
+    ],
+    "description": ""
+  },
+  "useDispatch": {
+    "prefix": "ud",
+    "body": ["import { useDispatch } from 'react-redux'", "const dispatch = useDispatch()"]
+  },
+  "userSelector": {
+    "prefix": "us",
+    "body": [
+      "import { useDispatch, useSelector } from 'react-redux'",
+      "import { select$1 } from '../../features/$2Slice'",
+      "const $2Selector = useSelector(select$1)"
+    ],
+    "description": "post or user"
+  },
+
+  "useEffect": {
+    "prefix": "ue",
+    "body": ["useEffect(() => {$1},[])"]
+  },
+
+  "onClick": {
+    "prefix": "oc",
+    "body": ["onClick{() => $1}"]
+  },
+
+  "className": {
+    "prefix": "cl",
+    "body": ["className={classes.$1}"],
+    "description": ""
+  },
+
+  "makestyles": {
+    "prefix": "mk",
+    "body": ["import { styled } from '@mui/material/styles';"],
+    "description": ""
+  },
+  "console.log()": {
+    "prefix": "c",
+    "body": ["console.log($1)"],
+    "description": ""
+  },
+  "console.log(text)": {
+    "prefix": "c",
+    "body": ["console.log('$1')"],
+    "description": ""
+  }
+}
