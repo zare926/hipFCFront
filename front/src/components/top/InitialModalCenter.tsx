@@ -15,16 +15,27 @@ const CenterBlock = styled('div')({
   left: '50%',
   transform: 'translateY(-50%) translateX(-50%)',
   padding: 20,
+  animation: 'fadeIn 2s ease-out',
+  '@keyframes fadeIn': {
+    '0%': {
+      opacity: 0,
+    },
+    '100%': {
+      opacity: 1,
+    },
+  },
 })
 
 // 説明文
-const ExplainText = styled(Typography)({
+const ExplainText = styled('p')({
   marginTop: 3,
+  textAlign: 'center',
 })
 
 // ボタンの中の説明文
-const ExplainButtonText = styled(Typography)({
+const ExplainButtonText = styled('p')({
   marginTop: 3,
+  textAlign: 'center',
 })
 
 // 寄せるためのブロック
@@ -101,18 +112,18 @@ const InitialModalCenter = () => {
   return (
     <Container>
       <CenterBlock>
-        <ExplainText align='center'>このサイトは音が流れます。</ExplainText>
-        <ExplainText align='center'>サウンドON、OFFを選択してください。</ExplainText>
-        <SpaceBox height={20} />
+        <ExplainText>このサイトは音が流れます。</ExplainText>
+        <ExplainText>サウンドON、OFFを選択してください。</ExplainText>
+        <SpaceBox height={8} />
         <CenterButtonBox>
           <PlayButton onClick={() => console.log('ON')}>
             <span></span>
-            <ExplainButtonText align='center'>Sound ON</ExplainButtonText>
+            <ExplainButtonText>Sound ON</ExplainButtonText>
           </PlayButton>
         </CenterButtonBox>
         <CenterButtonBox>
           <NotPlayButton onClick={() => console.log('OFF')}>
-            <ExplainButtonText align='center'>Sound OFF</ExplainButtonText>
+            <ExplainButtonText>Sound OFF</ExplainButtonText>
           </NotPlayButton>
         </CenterButtonBox>
       </CenterBlock>
