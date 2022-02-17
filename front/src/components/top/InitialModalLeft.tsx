@@ -5,8 +5,7 @@ import { Typography } from '@mui/material'
 // 文字を入れるブロック
 const TopTextBlock = styled('div')({
   paddingTop: 40,
-  paddingLeft: 50,
-  width: '100%',
+  marginLeft: 50,
 })
 
 const TopText = styled('p')({
@@ -27,6 +26,9 @@ const TopText = styled('p')({
       opacity: 1,
       transform: 'translate(0)',
     },
+  },
+  '@media screen and (max-width: 450px)': {
+    fontSize: 28,
   },
 })
 
@@ -51,9 +53,6 @@ const ButtomText = styled('p')({
 })
 
 const InitialModalLeft = () => {
-  useEffect(() => {
-    const element = document.getElementById('bandName') as HTMLParagraphElement
-  }, [])
   return (
     <div>
       <TopTextBlock>

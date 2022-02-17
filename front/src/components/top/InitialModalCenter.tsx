@@ -1,12 +1,5 @@
 import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
 import SpaceBox from '../UIkit/SpaceBox'
-
-// 一番親
-const Container = styled('div')({
-  height: '100%',
-  position: 'relative',
-})
 
 // 要素を包み込むブロック
 const CenterBlock = styled('div')({
@@ -15,7 +8,7 @@ const CenterBlock = styled('div')({
   left: '50%',
   transform: 'translateY(-50%) translateX(-50%)',
   padding: 20,
-  animation: 'fadeIn 2s ease-out',
+  animation: 'fadeIn 4.5s ease-out',
   '@keyframes fadeIn': {
     '0%': {
       opacity: 0,
@@ -110,24 +103,22 @@ const NotPlayButton = styled('div')({
 
 const InitialModalCenter = () => {
   return (
-    <Container>
-      <CenterBlock>
-        <ExplainText>このサイトは音が流れます。</ExplainText>
-        <ExplainText>サウンドON、OFFを選択してください。</ExplainText>
-        <SpaceBox height={8} />
-        <CenterButtonBox>
-          <PlayButton onClick={() => console.log('ON')}>
-            <span></span>
-            <ExplainButtonText>Sound ON</ExplainButtonText>
-          </PlayButton>
-        </CenterButtonBox>
-        <CenterButtonBox>
-          <NotPlayButton onClick={() => console.log('OFF')}>
-            <ExplainButtonText>Sound OFF</ExplainButtonText>
-          </NotPlayButton>
-        </CenterButtonBox>
-      </CenterBlock>
-    </Container>
+    <CenterBlock>
+      <ExplainText>このサイトは音が流れます。</ExplainText>
+      <ExplainText>サウンドON、OFFを選択してください。</ExplainText>
+      <SpaceBox height={8} />
+      <CenterButtonBox>
+        <PlayButton onClick={() => console.log('ON')}>
+          <span></span>
+          <ExplainButtonText>Sound ON</ExplainButtonText>
+        </PlayButton>
+      </CenterButtonBox>
+      <CenterButtonBox>
+        <NotPlayButton onClick={() => console.log('OFF')}>
+          <ExplainButtonText>Sound OFF</ExplainButtonText>
+        </NotPlayButton>
+      </CenterButtonBox>
+    </CenterBlock>
   )
 }
 

@@ -57,5 +57,10 @@
     "prefix": "c",
     "body": ["console.log('$1')"],
     "description": ""
+  },
+  "media": {
+    "prefix": "m",
+    "body": ["\"@media screen and (max-width: $1)\":{$2}"],
+    "description": "media screen スニぺット"
   }
 }
