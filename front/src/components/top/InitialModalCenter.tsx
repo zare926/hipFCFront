@@ -1,4 +1,7 @@
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { styled } from '@mui/material/styles'
+import { topLoadingOpen } from '../../reducers/controlBoolSlice'
 import SpaceBox from '../UIkit/SpaceBox'
 
 // 要素を包み込むブロック
@@ -102,13 +105,14 @@ const NotPlayButton = styled('div')({
 })
 
 const InitialModalCenter = () => {
+  const dispatch = useDispatch()
   return (
     <CenterBlock>
       <ExplainText>このサイトは音が流れます。</ExplainText>
       <ExplainText>サウンドON、OFFを選択してください。</ExplainText>
       <SpaceBox height={8} />
       <CenterButtonBox>
-        <PlayButton onClick={() => console.log('ON')}>
+        <PlayButton onClick={() => dispatch(topLoadingOpen({ isOpen: true }))}>
           <span></span>
           <ExplainButtonText>Sound ON</ExplainButtonText>
         </PlayButton>
