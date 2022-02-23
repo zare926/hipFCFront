@@ -40,7 +40,7 @@ const Horizon = styled('div')({
   left: '50%',
   transform: 'translate(-50%,-50%)',
   borderBottom: 'solid 1px white',
-  animation: 'horizonEffect 4.2s linear forwards',
+  animation: 'horizonEffect 3.8s linear forwards',
   '@keyframes horizonEffect': {
     '0%': {
       width: '0%',
@@ -70,9 +70,9 @@ const TopLoading = () => {
   return (
     <Container>
       <Overtlay>
-        <LogoBlock>
+        {/* <LogoBlock>
           <Logo src={hipLogoWhite}></Logo>
-        </LogoBlock>
+        </LogoBlock> */}
         <Horizon></Horizon>
       </Overtlay>
     </Container>

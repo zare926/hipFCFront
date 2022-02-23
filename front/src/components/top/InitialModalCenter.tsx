@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { styled } from '@mui/material/styles'
-import { topLoadingOpen } from '../../reducers/controlBoolSlice'
+import { initialTopOpen, musicPlay, topFadeOpen, topLoadingOpen, topOpen } from '../../reducers/controlBoolSlice'
 import SpaceBox from '../UIkit/SpaceBox'
 
 // 要素を包み込むブロック
@@ -104,15 +104,41 @@ const NotPlayButton = styled('div')({
   },
 })
 
+// Sound ONを押した一連の流れ
 const InitialModalCenter = () => {
   const dispatch = useDispatch()
+
+  const fadeFromLoading = () => {
+    // 音楽再生
+    dispatch(musicPlay({ isPlay: true }))
+    // loading描画
+    dispatch(topLoadingOpen({ isOpen: true }))
+    // ３.8秒後にまとめて色々出す
+    setTimeout(() => {
+      topBoolControl()
+    }, 3800)
+  }
+
+  const topBoolControl = () => {
+    // Fade描画
+    dispatch(topFadeOpen({ isOpen: true }))
+    // loading消す
+    dispatch(topLoadingOpen({ isOpen: false }))
+    // 最初の画面消す
+    dispatch(initialTopOpen({ isOpen: false }))
+    // メインのトップ画面描画
+    dispatch(topOpen({ isOpen: true }))
+  }
+
+  // Sound OFFを押した場合
+
   return (
     <CenterBlock>
       <ExplainText>このサイトは音が流れます。</ExplainText>
       <ExplainText>サウンドON、OFFを選択してください。</ExplainText>
       <SpaceBox height={8} />
       <CenterButtonBox>
-        <PlayButton onClick={() => dispatch(topLoadingOpen({ isOpen: true }))}>
+        <PlayButton onClick={() => fadeFromLoading()}>
           <span></span>
           <ExplainButtonText>Sound ON</ExplainButtonText>
         </PlayButton>

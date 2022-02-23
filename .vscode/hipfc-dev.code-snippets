@@ -62,5 +62,10 @@
     "prefix": "m",
     "body": ["\"@media screen and (max-width: $1)\":{$2}"],
     "description": "media screen スニぺット"
+  },
+  "styled": {
+    "prefix": "sty",
+    "body": ["const $1 = styled('$2')({$3})"],
+    "description": "media screen スニぺット"
   }
 }
