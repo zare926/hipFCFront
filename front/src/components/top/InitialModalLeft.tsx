@@ -27,8 +27,8 @@ const TopText = styled('p')({
       transform: 'translate(0)',
     },
   },
-  '@media screen and (max-width: 450px)': {
-    fontSize: 28,
+  '@media screen and (max-width: 599px)': {
+    fontSize: 24,
   },
 })
 
@@ -49,6 +49,9 @@ const ButtomText = styled('p')({
       opacity: 1,
       transform: ' translate(0)',
     },
+  },
+  '@media screen and (max-width: 599px)': {
+    fontSize: 20,
   },
 })
 

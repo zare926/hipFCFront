@@ -10,12 +10,16 @@ import {
   topLoadingControl,
 } from '../reducers/controlBoolSlice'
 import TopLoading from '../components/top/TopLoading'
-import TopPiece from '../components/top/TopPiece'
 import TopFade from '../components/top/TopFade'
 import TopTitle from '../components/top/TopTitle'
+import TopHeader from '../components/top/TopHeader'
+import MusicControl from '../components/music/MusicControl'
+import { MUSICSWITCH } from '../types/musicType'
+import ScrollInduction from '../components/UIkit/ScrollInduction'
+import ArtistImage from '../components/top/ArtistImage'
+import SpaceBox from '../components/UIkit/SpaceBox'
 
 const Container = styled('div')({
-  overflowY: 'scroll',
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
   '&::-webkit-scrollbar': {
@@ -23,7 +27,29 @@ const Container = styled('div')({
   },
 })
 
-const Top = () => {
+const MusicControlBlock = styled('div')({
+  position: 'absolute',
+  right: '4.5rem',
+  marginTop: 150,
+  cursor: 'pointer',
+  '@media screen and (max-width: 1024px)': {
+    marginTop: 100,
+  },
+  '@media screen and (max-width: 599px)': {
+    marginTop: 100,
+  },
+  animation: 'fadeDisc 4s linear forwards',
+  '@keyframes fadeDisc': {
+    '0%': {
+      opacity: 0,
+    },
+    '100%': {
+      opacity: 1,
+    },
+  },
+})
+
+const Top = (props: MUSICSWITCH) => {
   const dispatch = useDispatch()
   // Loadingを出すためのReduxBool
   const topLoading = useSelector(topLoadingControl)
@@ -40,7 +66,18 @@ const Top = () => {
       {topFade.isOpen && <TopFade />}
       {/* <TopPiece /> */}
       {initialTop.isOpen && <InitialModal />}
-      {topBool.isOpen && <TopTitle />}
+      {topBool.isOpen && (
+        <>
+          <TopHeader />
+          <MusicControlBlock>
+            <MusicControl play={props.play} pause={props.pause} />
+          </MusicControlBlock>
+          <TopTitle />
+          {/* <ScrollInduction /> */}
+          <ArtistImage />
+          <SpaceBox height={1000} />
+        </>
+      )}
     </Container>
   )
 }

@@ -1,22 +1,21 @@
-import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import TopFade from './components/top/TopFade'
-import TopLoading from './components/top/TopLoading'
-import TopPiece from './components/top/TopPiece'
-import TopTitle from './components/top/TopTitle'
+import MusicControl from './components/music/MusicControl'
+import ArtistImage from './components/top/ArtistImage'
+import EmergeImage from './components/top/scrollUIkit/EmergeImage'
+import TopHeader from './components/top/TopHeader'
 import { ParentHeight } from './components/UIkit/ParentHeight'
+import ScrollInduction from './components/UIkit/ScrollInduction'
 import Top from './containers/Top'
-import Test from './Test'
+import { MUSICSWITCH } from './types/musicType'
 
-const Router = () => {
+const Router = (props: MUSICSWITCH) => {
   return (
     <ParentHeight>
       <BrowserRouter>
-        <Route exact path='/test' component={Test} />
-        <Route exact path='(/?)' component={Top} />
-        <Route exact path='/exa' component={TopPiece} />
-        <Route exact path='/title' component={TopTitle} />
-        <Route exact path='/fade' component={TopFade} />
+        {/* <Route play={props.play} pause={props.pause} exact path='(/?)' component={Top} /> */}
+        <Route exact path='(/?)' render={() => <Top play={props.play} pause={props.pause} />} />
+        <Route exact path='/scroll' component={ArtistImage} />
+        <Route exact path='/image' component={EmergeImage} />
       </BrowserRouter>
     </ParentHeight>
   )

@@ -8,7 +8,7 @@ const FadeContainer = styled('div')({
   width: '100%',
   height: '100%',
   background: '#fff',
-  zIndex: 9999999,
+  // zIndex: 9999999,
   textAlign: 'center',
   color: '#fff',
 })

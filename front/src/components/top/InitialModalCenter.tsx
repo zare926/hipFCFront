@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { styled } from '@mui/material/styles'
 import { initialTopOpen, musicPlay, topFadeOpen, topLoadingOpen, topOpen } from '../../reducers/controlBoolSlice'
 import SpaceBox from '../UIkit/SpaceBox'
+import { musicControl } from '../../features/music'
 
 // 要素を包み込むブロック
 const CenterBlock = styled('div')({
@@ -26,12 +27,20 @@ const CenterBlock = styled('div')({
 const ExplainText = styled('p')({
   marginTop: 3,
   textAlign: 'center',
+  '@media screen and (max-width: 599px)': {
+    fontSize: 10,
+  },
 })
 
 // ボタンの中の説明文
 const ExplainButtonText = styled('p')({
-  marginTop: 3,
+  lineHeight: 2,
   textAlign: 'center',
+  fontSize: 14,
+  '@media screen and (max-width: 599px)': {
+    lineHeight: 3,
+    fontSize: 10,
+  },
 })
 
 // 寄せるためのブロック
@@ -109,10 +118,11 @@ const InitialModalCenter = () => {
   const dispatch = useDispatch()
 
   const fadeFromLoading = () => {
-    // 音楽再生
+    // 音楽再生用のコンポーネント読み込み
     dispatch(musicPlay({ isPlay: true }))
+    dispatch(musicControl())
     // loading描画
-    dispatch(topLoadingOpen({ isOpen: true }))
+    // dispatch(topLoadingOpen({ isOpen: true }))
     // ３.8秒後にまとめて色々出す
     setTimeout(() => {
       topBoolControl()
@@ -131,7 +141,12 @@ const InitialModalCenter = () => {
   }
 
   // Sound OFFを押した場合
-
+  const topPhetoho = () => {
+    // 最初の画面消す
+    dispatch(initialTopOpen({ isOpen: false }))
+    // メインのトップ画面描画
+    dispatch(topOpen({ isOpen: true }))
+  }
   return (
     <CenterBlock>
       <ExplainText>このサイトは音が流れます。</ExplainText>
@@ -144,7 +159,7 @@ const InitialModalCenter = () => {
         </PlayButton>
       </CenterButtonBox>
       <CenterButtonBox>
-        <NotPlayButton onClick={() => console.log('OFF')}>
+        <NotPlayButton onClick={() => topPhetoho()}>
           <ExplainButtonText>Sound OFF</ExplainButtonText>
         </NotPlayButton>
       </CenterButtonBox>
