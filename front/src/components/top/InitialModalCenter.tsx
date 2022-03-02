@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { styled } from '@mui/material/styles'
-import { initialTopOpen, musicPlay, topFadeOpen, topLoadingOpen, topOpen } from '../../reducers/controlBoolSlice'
+import {
+  discSpin,
+  initialTopOpen,
+  musicPlay,
+  topFadeOpen,
+  topLoadingOpen,
+  topOpen,
+} from '../../reducers/controlBoolSlice'
 import SpaceBox from '../UIkit/SpaceBox'
 import { musicControl } from '../../features/music'
 
@@ -146,6 +153,8 @@ const InitialModalCenter = () => {
     dispatch(initialTopOpen({ isOpen: false }))
     // メインのトップ画面描画
     dispatch(topOpen({ isOpen: true }))
+    // Disc回さない
+    dispatch(discSpin({ isSpin: false }))
   }
   return (
     <CenterBlock>

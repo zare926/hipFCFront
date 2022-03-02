@@ -2,22 +2,16 @@ import React, { useEffect, useState } from 'react'
 import InitialModal from '../components/top/InitialModal'
 import { styled } from '@mui/material/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  initialTopControl,
-  topControl,
-  topFadeControl,
-  topFadeOpen,
-  topLoadingControl,
-} from '../reducers/controlBoolSlice'
+import { initialTopControl, topControl, topFadeControl, topLoadingControl } from '../reducers/controlBoolSlice'
 import TopLoading from '../components/top/TopLoading'
 import TopFade from '../components/top/TopFade'
 import TopTitle from '../components/top/TopTitle'
 import TopHeader from '../components/top/TopHeader'
 import MusicControl from '../components/music/MusicControl'
 import { MUSICSWITCH } from '../types/musicType'
-import ScrollInduction from '../components/UIkit/ScrollInduction'
 import ArtistImage from '../components/top/ArtistImage'
 import SpaceBox from '../components/UIkit/SpaceBox'
+import { useInView } from 'react-intersection-observer'
 
 const Container = styled('div')({
   msOverflowStyle: 'none',
@@ -60,6 +54,12 @@ const Top = (props: MUSICSWITCH) => {
   // メインのトップ画面の表示制御用ReduxBool
   const topBool = useSelector(topControl)
 
+  const { ref, inView } = useInView({
+    rootMargin: '-400px',
+  })
+
+  console.log(inView)
+
   return (
     <Container>
       {topLoading.isOpen && <TopLoading />}
@@ -73,8 +73,10 @@ const Top = (props: MUSICSWITCH) => {
             <MusicControl play={props.play} pause={props.pause} />
           </MusicControlBlock>
           <TopTitle />
-          {/* <ScrollInduction /> */}
-          <ArtistImage />
+          <SpaceBox height={50} />
+          <div ref={ref} style={{ height: 500 }}>
+            <ArtistImage />
+          </div>
           <SpaceBox height={1000} />
         </>
       )}

@@ -58,6 +58,7 @@ const TextBlock = styled('span')({
 })
 
 const EmergeText = (props: TEXT) => {
+  console.log('EmergeText')
   const { ref, inView } = useInView({
     rootMargin: '-10px',
     triggerOnce: true,

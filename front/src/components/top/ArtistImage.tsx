@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles'
 import EmergeText from './scrollUIkit/EmergeText'
 import Artist from '../../assets/images/biography.jpg'
 import EmergeImage from './scrollUIkit/EmergeImage'
+import EmergeBiography from './scrollUIkit/EmergeBiography'
 const Container = styled('div')({
   height: '100%',
   width: '100%',
@@ -26,6 +27,7 @@ const ArtistImage = () => {
           <EmergeText text={'BIOGRAPHY'} />
         </BiographyText>
       </BiographyBlock>
+      <EmergeBiography test={'test'} />
       <EmergeImage image={Artist} />
     </Container>
   )
