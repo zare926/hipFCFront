@@ -31,7 +31,7 @@ const TriggerBlock = styled('div')({
       opacity: 0,
     },
     '100%': {
-      opacity: 0.8,
+      opacity: 0.6,
     },
   },
 })
@@ -53,7 +53,7 @@ const ImageArea = styled('div')({
   backgroundColor: 'red',
   position: 'absolute',
   top: '10rem',
-  animation: 'image 40s linear infinite',
+  animation: 'image 60s linear infinite',
   '@keyframes image': {
     '0%': {
       transform: 'perspective(1000px) rotate(13deg) rotateX(10deg) rotateY(-30deg)',

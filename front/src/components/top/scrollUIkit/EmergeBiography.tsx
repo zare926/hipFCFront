@@ -11,9 +11,8 @@ const H2Block = styled('h2')({
   fontSize: '1.5rem',
   padding: '4rem 4.875rem 0 6rem',
   letterSpacing: '-0.02em',
-  color: '#999',
+  color: '#666',
   fontWeight: 'lighter',
-  // textAlign: 'center',
   animation: 'slideText 2s linear forwards',
   '@keyframes slideText': {
     '0%': {
@@ -25,25 +24,18 @@ const H2Block = styled('h2')({
       marginTop: 0,
     },
   },
+  '@media screen and (max-width: 1024px)': {
+    fontSize: '2rem',
+  },
 })
 
-const TextBlock = styled('span')({
-  // '@keyframes fadeText': {
-  //   '0%': {
-  //     opacity: 0,
-  //   },
-  //   '100%': {
-  //     opacity: 1,
-  //   },
-  // },
-})
+const TextBlock = styled('span')({})
 
 interface TEXT {
   test: string
 }
 
 const EmergeBiography = (props: TEXT) => {
-  console.log('EmergeBiography')
   const { ref, inView } = useInView({
     rootMargin: '10px',
     triggerOnce: true,

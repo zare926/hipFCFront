@@ -19,11 +19,11 @@ const TriggerBlock = styled('div')({
 
 const H1Block = styled('h1')({
   marginBottom: '-3.5rem',
-  fontSize: '6em',
+  fontSize: '4em',
   overflow: 'hidden',
   padding: '0 4.875rem 0 4.5rem',
   letterSpacing: '-0.02em',
-  color: '#999',
+  color: '#666',
   fontWeight: 'lighter',
   marginTop: '1rem',
   '@media screen and (max-width: 1024px)': {
@@ -46,7 +46,7 @@ const H1Block = styled('h1')({
 })
 
 const TextBlock = styled('span')({
-  animation: 'fadeText 1s ease-out forwards',
+  animation: 'fadeText 2s ease-out forwards',
   '@keyframes fadeText': {
     '0%': {
       opacity: 0,
@@ -58,7 +58,6 @@ const TextBlock = styled('span')({
 })
 
 const EmergeText = (props: TEXT) => {
-  console.log('EmergeText')
   const { ref, inView } = useInView({
     rootMargin: '-10px',
     triggerOnce: true,

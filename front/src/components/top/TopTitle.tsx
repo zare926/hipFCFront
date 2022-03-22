@@ -6,9 +6,17 @@ import ScrollInduction from '../UIkit/ScrollInduction'
 
 const Container = styled('div')({
   display: 'flex',
-  height: '100vh',
+  height: '130vh',
   flexDirection: 'column',
   justifyContent: 'center',
+  '@media screen and (max-width: 1024px)': {
+    height: '120vh',
+    paddingTop: 40,
+  },
+  '@media screen and (max-width: 599px)': {
+    height: '100vh',
+    paddingTop: 140,
+  },
 })
 
 const H1Block = styled('h1')({
@@ -147,7 +155,7 @@ const EmergingText4 = styled('span')({
   display: 'inline-block',
   fontSize: '6rem',
   letterSpacing: '0.1em',
-  marginBottom: 100,
+  marginBottom: 150,
   animation: 'emerging4  3.5s ease-out forwards',
   '@media screen and (max-width: 1024px)': {
     animation: 'emerging4  3s ease-out forwards',

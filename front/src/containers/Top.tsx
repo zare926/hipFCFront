@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import InitialModal from '../components/top/InitialModal'
 import { styled } from '@mui/material/styles'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,6 +12,8 @@ import { MUSICSWITCH } from '../types/musicType'
 import ArtistImage from '../components/top/ArtistImage'
 import SpaceBox from '../components/UIkit/SpaceBox'
 import { useInView } from 'react-intersection-observer'
+import { useOffsetTop } from '../hooks/useOffsetTop'
+import FlowingImage from '../components/top/FlowingImage'
 
 const Container = styled('div')({
   msOverflowStyle: 'none',
@@ -54,14 +56,17 @@ const Top = (props: MUSICSWITCH) => {
   // メインのトップ画面の表示制御用ReduxBool
   const topBool = useSelector(topControl)
 
-  const { ref, inView } = useInView({
-    rootMargin: '-400px',
-  })
+  // const { ref, inView } = useInView({
+  //   rootMargin: '-400px',
+  // })
 
-  console.log(inView)
+  // console.log(inView)
+
+  const iconRef = useRef(null)
+  const { pageOffsetTop, viewportOffsetTop } = useOffsetTop(iconRef)
 
   return (
-    <Container>
+    <Container ref={iconRef}>
       {topLoading.isOpen && <TopLoading />}
       {topFade.isOpen && <TopFade />}
       {/* <TopPiece /> */}
@@ -74,10 +79,9 @@ const Top = (props: MUSICSWITCH) => {
           </MusicControlBlock>
           <TopTitle />
           <SpaceBox height={50} />
-          <div ref={ref} style={{ height: 500 }}>
-            <ArtistImage />
-          </div>
-          <SpaceBox height={1000} />
+          <FlowingImage />
+          <ArtistImage />
+          <SpaceBox height={300} />
         </>
       )}
     </Container>
